@@ -1,6 +1,7 @@
 ﻿using Leave_Management.Contracts;
 using Leave_Management.Data;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,12 @@ namespace Leave_Management.Repository
         {
             _db.LeaveAllocations.Remove(entity);
             return Save();
+        }
+
+        public bool Exists(int id)
+        {
+            var exists = _db.LeaveAllocations.Any(q => q.Id == id);
+            return exists;
         }
 
         public ICollection<LeaveAllocation> FindAll()
