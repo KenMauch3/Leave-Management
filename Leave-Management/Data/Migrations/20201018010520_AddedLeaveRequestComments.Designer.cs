@@ -4,14 +4,16 @@ using Leave_Management.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Leave_Management.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201018010520_AddedLeaveRequestComments")]
+    partial class AddedLeaveRequestComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,9 +67,6 @@ namespace Leave_Management.Data.Migrations
 
                     b.Property<string>("ApproverComment")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Cancelled")
-                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("DateActioned")
                         .HasColumnType("datetime2");
