@@ -63,6 +63,34 @@ namespace Leave_Management.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(LeaveRequestViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+                var user = _userManager.GetUserAsync(User).Result;
+                var leaveRequest = _leaveRequestRepository.FindById(model.Id);
+                leaveRequest.Approved = false;
+                leaveRequest.ApprovedById = user.Id;
+                leaveRequest.DateActioned = DateTime.Now;
+                leaveRequest.ApproverComment = model.ApproverComment;
+
+                _leaveRequestRepository.Update(leaveRequest);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Something went wrong");
+                return View(model);
+            }
+        }
+
         public ActionResult ApproveRequest(int id)
         {
             try
