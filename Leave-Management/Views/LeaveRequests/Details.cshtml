@@ -108,12 +108,12 @@ else
         @*<a class="btn-success" asp-action="ApproveRequest" asp-route-id="@Model.Id">
                 <i class="fa fa-check"></i>Approve
             </a>*@
-        <a asp-action="ApproveRequest" asp-route-id="@Model.Id"><input class="btn-success fa-input" value="&#xf00c;Approve"></a>
-        <input class="btn-danger fa-input" type="submit" value="&#xf00d;Reject">
+        <a asp-action="ApproveRequest" asp-route-id="@Model.Id"><input class="btn-success fas fas-input" value="&#xf00c; Approve"></a>
+        <input class="btn-danger fas fas-input" type="submit" value="&#xf00d; Reject">
      }
     @*<a class="btn-outline-secondary" asp-action="Index">
         <i class="fa fa-arrow-left"></i>Back to List
     </a>*@
-    <a asp-action="Index"><input class="btn-outline-secondary fa-input" value="&#xf060;Back to List"></a>
+    <a asp-action="Index"><input class="btn-outline-secondary fas fas-input" value="&#xf060; Back to List"></a>
 </div>
 </form>
